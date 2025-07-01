@@ -6,32 +6,32 @@
     <title>Document</title>
 </head>
 <body>
-    
     <script>
-        const val = undefined?.prop;
-        console.log(val);
+        const fruitArray = ["りんご","メロン","みかん",1];
+        console.log(fruitArray[0]);
+        console.log(fruitArray[3]);
 
-        const person = {
-            name: "独習 太郎",
-            age: 28,
-            parents: {
-                mother: "Sara",
-                father: "John",
-            },
-        };
+        const numArray = [10,20,30];
+        for (let index = 0; index < numArray.length; index++) {
+            numArray[index] = numArray[index] + 10;
+        }
+        console.log(numArray);
 
-        console.log(person.siblings);
-        console.log(person.siblings?.length);
-        // console.log(person.siblings.length); これはエラーになる
+        const fruits = {apple: "りんご", banana: "バナナ", orange: "オレンジ"};
+        for (const key in fruits) {
+            console.log(`キー[${key}] 値:[${fruits[key]}]`);
+        }
 
-        // メソッドに使う場合は末尾の丸括弧の前に記述する
-        undefined?.nonMethod?.();
+        const arry = ["リンゴ","バナナ"];
+        for (const key in arry){
+            console.log(key);
+        }
+        console.log(arry);
 
-        // ブラケット記法と併用することもできる
-        undefined?.["prop"];
-
-        // 使うことはないが、他のプリミティブ型に対しても使用可能
-        1?.prop;
+        const fruits2 = ["りんご","バナナ","オレンジ"];
+        for (const value of fruits2) {
+            console.log(value);
+        }
     </script>
 </body>
 </html>
