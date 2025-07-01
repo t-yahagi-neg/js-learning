@@ -7,32 +7,21 @@
 </head>
 <body>
     <script>
-        // すべてのループを break 文で抜ける処理
-        const str = ["a","b","c"];
-        const num = [10,20,30];
-
-        alphabet:
-        for(let i = 0; i < str.length; i++){
-            numeric:
-            for(let j = 0; j < num.length; j++){
-                console.log(`アルファベット：[${str[i]}]`, `数値：[${num[j]}]`);
-
-                if(str[i] === "b" && num[j] === 30) {
-                    // 親のループに対するbreak
-                    break alphabet;
-                }
-            }
+        // 関数の宣言
+        function sum(val1, val2) {
+            return val1 + val2;
         }
 
-        // 条件に応じてブロック内の処理をスキップ
-        block: {
-            const rand = Math.random();
-            if(rand > 0.5) {
-                break block;
-            }
-            console.log("0.5より大きいときはスキップされます。");
+        // 関数の実行
+        let result = sum(10, 20);
+        console.log(result);
+
+        // 練習問題 6.1
+        function multiply(val1, val2) {
+            return val1 * val2;
         }
-        console.log("block 後続処理です。");
+        console.log(multiply(7, 9));
+        console.log(multiply(-11, 9));
     </script>
 </body>
 </html>
