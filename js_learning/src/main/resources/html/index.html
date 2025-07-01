@@ -7,15 +7,27 @@
 </head>
 <body>
     <script>
-        function fn(obj) {
-            // 初期値を設定（Null合体の自己代入を使用
-            obj.arg1 ??= "初期値1";
-            obj.arg2 ??= "初期値2";
-            console.log(obj.arg1, obj.arg2);
+        // 関数ないでプロパティの値を変更
+        const obj = { val: 1 };
+
+        function fn( obj2 ) {
+            obj2.val = 2;
         }
 
-        const params = { arg2: "引数2" };
-        fn(params);
+        fn(obj);
+
+        console.log(obj.val);
+        
+        // 関数ないで別のオブジェクトを変数に設定
+        const obj3 = { val: 1};
+        
+        function fn(obj2) {
+            obj2 = { val: 2};
+        }
+
+        fn(obj);
+
+        console.log(obj.val);
     </script>
 </body>
 </html>
