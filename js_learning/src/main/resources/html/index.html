@@ -9,15 +9,24 @@
     
     <script>
         let person = {
-            name: { first: "太郎", last: "独習"},
-            age: 18,
+            // hello: function() { console.log("こんにちは"); }
+            
+            // hello: function()を省略
+            hello() { console.log("こんにちは"); }
         };
+        person.hello();
 
-        console.log(person.age);
+        person.bye = function() { console.log("さようなら"); }
+        person.bye();
 
-        delete person.age;
+        person.hello = function() { console.log("Hello"); }
+        person.hello();
 
-        console.log(person.age);
+        window.alert("hello");
+        window["alert"]("hello");
+
+        console.log("hello");
+        console["log"]("hello");
     </script>
 </body>
 </html>
