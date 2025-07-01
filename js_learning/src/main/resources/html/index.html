@@ -8,13 +8,22 @@
 <body>
     
     <script>
-        let person = {name: "Bob", age: "32", male: true};
-        delete person.name;
-        console.log(person);
-        console.log(typeof person);
-        // 数字に変換「+」
-        console.log(+person.age);
-        console.log(!person.male);
+        // 変数に null を格納
+        let val = null;
+
+        // 右辺の val は null のため初期値が val に設定される
+        val = val ?? "初期値";
+        console.log(`val[${val}]`);
+
+        // null、 undefined 以外は左のオペランドを返す
+        let num = 0;
+        num = num ?? 10;
+        console.log(`num[${num}]`);
+
+        // "" は falsy な値
+        let val2 = "";
+        val2 = val2 || "初期値";
+        console.log(`val[${val2}]`);
     </script>
 </body>
 </html>
