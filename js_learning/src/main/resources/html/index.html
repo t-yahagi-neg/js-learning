@@ -8,17 +8,16 @@
 <body>
     
     <script>
-        const members = {
-            member1: "太郎",
-            member2: "次郎",
+        let person = {
+            name: { first: "太郎", last: "独習"},
+            age: 18,
         };
 
-        const keyBase = "member";
+        console.log(person.age);
 
-        // "member" + "1"
-        console.log(members[ keyBase + "1" ]);
+        delete person.age;
 
-        console.log(members[ keyBase + "2"]);
+        console.log(person.age);
     </script>
 </body>
 </html>
