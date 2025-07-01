@@ -7,11 +7,20 @@
 </head>
 <body>
     <script>
-        function hello(name) {
-            console.log("こんにちは、" + name);
-        }
+        // 無名関数をコールバック関数として使用
+        setTimeout(function() {
+            console.log("こんにちは");
+        }, 3000);
 
-        setTimeout(hello, 3000, "独習太郎");    // 3秒後に以下のメッセージが表示される
+
+        // 無名関数をコールバック関数以外に使用するケース
+        // 無名関数を変数に代入
+        const fn = function() {}
+
+        // オブジェクトのプロパティに無名関数を設定
+        const obj = {
+            method: function() {}
+        }
     </script>
 </body>
 </html>
