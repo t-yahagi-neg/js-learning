@@ -7,36 +7,32 @@
 </head>
 <body>
     <script>
-        const fruits = {apple:"リンゴ", banana:"バナナ"};
+        // すべてのループを break 文で抜ける処理
+        const str = ["a","b","c"];
+        const num = [10,20,30];
 
-        // プロパティの配列を取得
-        const props = Object.keys(fruits);
-        console.log(props);
+        alphabet:
+        for(let i = 0; i < str.length; i++){
+            numeric:
+            for(let j = 0; j < num.length; j++){
+                console.log(`アルファベット：[${str[i]}]`, `数値：[${num[j]}]`);
 
-        for(const prop of props) {
-            console.log(prop, fruits[prop]);
+                if(str[i] === "b" && num[j] === 30) {
+                    // 親のループに対するbreak
+                    break alphabet;
+                }
+            }
         }
 
-        // 値の配列を取得
-        const values = Object.values(fruits);
-        console.log(values);
-
-        for(const value of values) {
-            console.log(value);
+        // 条件に応じてブロック内の処理をスキップ
+        block: {
+            const rand = Math.random();
+            if(rand > 0.5) {
+                break block;
+            }
+            console.log("0.5より大きいときはスキップされます。");
         }
-
-        // プロパティと値のペアを配列で取得
-        const entries = Object.entries(fruits);
-        console.log(entries);
-
-        for(const entry of entries) {
-            console.log(entry[0], entry[1]);
-        }
-
-        // 分割代入を使った省略記法
-        for(const [key,value] of Object.entries({apple:"リンゴ", banana:"バナナ"})) {
-            console.log(key, value);
-        }
+        console.log("block 後続処理です。");
     </script>
 </body>
 </html>
