@@ -7,22 +7,11 @@
 </head>
 <body>
     <script>
-        function saySomething(callback) {   // コールバック関数を受け取る関数
-            const result = callback();  // コールバック関数の実行
-            console.log(`${result}、独習太郎!`);
-        }
-
         function hello() {
-            return "こんにちは";
+            console.log("こんにちは");
         }
 
-        function bye() {
-            return "さようなら";
-        }
-
-        // コールバック関数を引数に設定して、関数を実行
-        saySomething(hello);
-        saySomething(bye);
+        setTimeout(hello, 3000);    // 3秒後に以下のメッセージが表示される
     </script>
 </body>
 </html>
