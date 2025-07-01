@@ -12,15 +12,14 @@
             name: { first: "太郎", last: "独習"},
             age: 18
         };
-        console.log(person.age);
-        console.log(person.name.first);
-        // lastプロパティの値の変更
-        person.name.last = "次郎";
-        // genderプロパティと値の追加
-        person.gender = "男";
-        // familyプロパティに他のオブジェクトを追加
-        person.family = { wife: "花子", child: "三郎"};
-        console.log(person.family.wife);
+        console.log(person["age"]);
+        console.log(person["name"]["last"]);
+
+        person["name"]["last"] = "次郎";
+        person["gender"] = "男";
+        person["family"] = {wife: "花子", child: "三郎"};
+
+        console.log(person["family"]["wife"]);
         console.log(person);
     </script>
 </body>
