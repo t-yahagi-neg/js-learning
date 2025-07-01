@@ -7,27 +7,28 @@
 </head>
 <body>
     <script>
-        // 関数ないでプロパティの値を変更
-        const obj = { val: 1 };
+        // 関数にプロパティやメソッドを追加
+        // 空の関数を定義
+        function fn() {}
 
-        function fn( obj2 ) {
-            obj2.val = 2;
+        fn.fullName = "独習太郎";   // オブジェクトのようにプロパティの追加が可能
+        fn.hello = function() { // メソッドの追加も可能
+            console.log("こんにちは、独習太郎");
         }
 
-        fn(obj);
+        // プロパティの取得
+        console.log(fn.fullName);
 
-        console.log(obj.val);
-        
-        // 関数ないで別のオブジェクトを変数に設定
-        const obj3 = { val: 1};
-        
-        function fn(obj2) {
-            obj2 = { val: 2};
-        }
+        // メソッドの実行
+        fn.hello();
 
-        fn(obj);
+        /*
+        function fn() {}    関数オブジェクト
+        const obj = {}      オブジェクトリテラルで定義した空のオブジェクト
 
-        console.log(obj.val);
+        fn();               関数の実行を表す
+        obj();              {} で定義したオブジェクトを実行できないため、エラーが発生
+        */
     </script>
 </body>
 </html>
