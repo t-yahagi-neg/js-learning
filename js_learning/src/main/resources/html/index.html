@@ -7,19 +7,31 @@
 </head>
 <body>
     <script>
-        // 関数 add を Function コンストラクタから作成
-        const add = new Function("val1","val2","return val1 + val2;");
+        // デフォルト引数による初期値の設定
+        function plus(a, b=5) {
+            return a + b;
+        }
 
-        // 関数 (add) の実行
-        const result = add(1,2);
+        // 引数を 1 つしか渡さない場合
+        console.log(plus(1));
 
-        console.log(result);
+        // 引数を 2 つ渡した場合
+        console.log(plus(1, 10));
 
-        /*
-        Function コンストラクタは文字列から関数を作成できるが、
-        文字列を直接コードとして実行する方法に eval 関数がある
-        */
-        eval("console.log(1 + 2);");
+
+        // デフォルト引数は undefined の時に設定される
+        function hello(greeting = "こんにちは、", person = "独習太郎") {
+            console.log(greeting + person);
+        }
+
+        // 引数に undefined を渡した場合
+        hello(undefined, undefined);
+
+        // 引数に null を渡した場合
+        hello(null, null);
+
+        // 引数を省略した場合
+        hello();
     </script>
 </body>
 </html>
