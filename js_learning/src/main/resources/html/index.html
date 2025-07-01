@@ -22,6 +22,20 @@
         }
         console.log(multiply(7, 9));
         console.log(multiply(-11, 9));
+
+        /*
+        　実引数は、関数内でのみ使用できる arguments という特殊なオブジェクトにも渡される。
+        　これは、仮引数を設定しない場合でも、実引数の値を関数内で取得できることを表している。
+        　引数の個数が決まっていない状態を可変長引数と呼ぶ。
+        */
+        function sumCustom() {
+            const val1 = arguments[0];
+            const val2 = arguments[1];
+            return val1 + val2;
+        }
+        console.log("#############################");
+        console.log(sum(30)); // ２つ目がないとreturnの加算が正常にできない
+        console.log(sum(10, 20));
     </script>
 </body>
 </html>
