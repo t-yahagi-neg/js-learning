@@ -7,34 +7,12 @@
 </head>
 <body>
     <script>
-        /*
-        戻り値とは関係ない処理
-        function test() {
-            const val1 = arguments[0];
-            const val2 = arguments[1];
-            console.log(val1);
-            console.log(val2);
+        const minus = function(val1, val2) {
+            return val1 - val2;
         }
+        let result = minus(10,5);
 
-        test(10);
-        test(20, 30);
-        */
-
-        function printSum(a, b){
-            // 数値型以外が引数に渡されたときには関数の処理を終了
-            if (typeof a !== "number" || typeof b !== "number") {
-                console.log("引数が不正なデータ型のため、関数の処理を終了します。");
-                return;
-            }
-            console.log(a + b);
-        }
-
-        // 文字列を渡した場合
-        let result = printSum("10","20");
         console.log(result);
-
-        // 数値を渡した場合
-        printSum(10,20);
     </script>
 </body>
 </html>
