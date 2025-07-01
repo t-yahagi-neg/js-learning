@@ -7,11 +7,11 @@
 </head>
 <body>
     <script>
-        function hello() {
-            console.log("こんにちは");
+        function hello(name) {
+            console.log("こんにちは、" + name);
         }
 
-        setTimeout(hello, 3000);    // 3秒後に以下のメッセージが表示される
+        setTimeout(hello, 3000, "独習太郎");    // 3秒後に以下のメッセージが表示される
     </script>
 </body>
 </html>
