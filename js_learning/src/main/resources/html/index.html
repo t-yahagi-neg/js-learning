@@ -7,28 +7,22 @@
 </head>
 <body>
     <script>
-        // 関数にプロパティやメソッドを追加
-        // 空の関数を定義
-        function fn() {}
-
-        fn.fullName = "独習太郎";   // オブジェクトのようにプロパティの追加が可能
-        fn.hello = function() { // メソッドの追加も可能
-            console.log("こんにちは、独習太郎");
+        function saySomething(callback) {   // コールバック関数を受け取る関数
+            const result = callback();  // コールバック関数の実行
+            console.log(`${result}、独習太郎!`);
         }
 
-        // プロパティの取得
-        console.log(fn.fullName);
+        function hello() {
+            return "こんにちは";
+        }
 
-        // メソッドの実行
-        fn.hello();
+        function bye() {
+            return "さようなら";
+        }
 
-        /*
-        function fn() {}    関数オブジェクト
-        const obj = {}      オブジェクトリテラルで定義した空のオブジェクト
-
-        fn();               関数の実行を表す
-        obj();              {} で定義したオブジェクトを実行できないため、エラーが発生
-        */
+        // コールバック関数を引数に設定して、関数を実行
+        saySomething(hello);
+        saySomething(bye);
     </script>
 </body>
 </html>
