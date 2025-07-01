@@ -8,25 +8,16 @@
 <body>
     
     <script>
-        let person = {
-            // hello: function() { console.log("こんにちは"); }
-            
-            // hello: function()を省略
-            hello() { console.log("こんにちは"); }
+        let mySymbl1 = Symbol();
+        let mySymbl2 = Symbol();
+
+        const obj = {
+            [mySymbl1]: "値1",
+            [mySymbl2]() {console.log("こんにちは");}
         };
-        person.hello();
 
-        person.bye = function() { console.log("さようなら"); }
-        person.bye();
-
-        person.hello = function() { console.log("Hello"); }
-        person.hello();
-
-        window.alert("hello");
-        window["alert"]("hello");
-
-        console.log("hello");
-        console["log"]("hello");
+        console.log(obj[mySymbl1]);
+        obj[mySymbl2]();
     </script>
 </body>
 </html>
