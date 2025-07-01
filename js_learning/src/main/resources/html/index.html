@@ -7,30 +7,16 @@
 </head>
 <body>
     <script>
-        const fruitArray = ["りんご","メロン","みかん",1];
-        console.log(fruitArray[0]);
-        console.log(fruitArray[3]);
+        const map = new Map;
+        map.set("apple", "りんご");
+        map.set("banana", "バナナ");
 
-        const numArray = [10,20,30];
-        for (let index = 0; index < numArray.length; index++) {
-            numArray[index] = numArray[index] + 10;
-        }
-        console.log(numArray);
-
-        const fruits = {apple: "りんご", banana: "バナナ", orange: "オレンジ"};
-        for (const key in fruits) {
-            console.log(`キー[${key}] 値:[${fruits[key]}]`);
+        for (const row of map) {
+            console.log(row[0],row[1]);
         }
 
-        const arry = ["リンゴ","バナナ"];
-        for (const key in arry){
-            console.log(key);
-        }
-        console.log(arry);
-
-        const fruits2 = ["りんご","バナナ","オレンジ"];
-        for (const value of fruits2) {
-            console.log(value);
+        for (const [key, value] of map) {
+            console.log(key, value);
         }
     </script>
 </body>
