@@ -7,15 +7,34 @@
 </head>
 <body>
     <script>
-        const map = new Map;
-        map.set("apple", "りんご");
-        map.set("banana", "バナナ");
+        const fruits = {apple:"リンゴ", banana:"バナナ"};
 
-        for (const row of map) {
-            console.log(row[0],row[1]);
+        // プロパティの配列を取得
+        const props = Object.keys(fruits);
+        console.log(props);
+
+        for(const prop of props) {
+            console.log(prop, fruits[prop]);
         }
 
-        for (const [key, value] of map) {
+        // 値の配列を取得
+        const values = Object.values(fruits);
+        console.log(values);
+
+        for(const value of values) {
+            console.log(value);
+        }
+
+        // プロパティと値のペアを配列で取得
+        const entries = Object.entries(fruits);
+        console.log(entries);
+
+        for(const entry of entries) {
+            console.log(entry[0], entry[1]);
+        }
+
+        // 分割代入を使った省略記法
+        for(const [key,value] of Object.entries({apple:"リンゴ", banana:"バナナ"})) {
             console.log(key, value);
         }
     </script>
