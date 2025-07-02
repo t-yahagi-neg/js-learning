@@ -1,14 +1,12 @@
-// 1. コードの実行開始
-let val = 0;
+let val = -1;
 
-// 2. タスクの登録
-setTimeout(function task() {
-    val = 1;
-}, 0);
+function timer() {
+    setTimeout(function() {
+        // 0～10のランダムな値を取得
+        val = Math.floor(Math.random() * 11);
+    }, 1000);
+}
 
-// 3. 値の出力
+timer();
+
 console.log(val);
-
-// valは1ではなく0。すなわち2. より前に3. が実行されていることを表す
-
-// 4. グローバルコンテキストの消滅
