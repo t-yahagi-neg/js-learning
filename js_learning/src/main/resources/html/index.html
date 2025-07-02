@@ -8,25 +8,47 @@
 <body>
     <script>
         // #######################################################
-        class Counter {
-            #count = 0;
+        // プロトタイプは関数に自動的に設定されているプロパティ
+        function Test() {}
 
-            #print() { console.log(this.#count); }
+        // 関数はオブジェクトの一種
+        Test.prop = "値";
 
-            increment() {
-                this.#count++;
-                this.#print();
-            }
+        console.log(Test.prop);
+
+        // prototype プロパティの存在確認
+        console.log("prototype" in Test);
+
+        // prototype にはオブジェクトが格納されている
+        console.log(typeof Test.prototype);
+
+        // #######################################################
+        // prototype にメソッドを登録
+        function Person(name) {
+            this.name = name;
         }
 
-        const counter = new Counter;
-        counter.increment();
+        Person.prototype.hello = function() {
+            /* 
+            Person コンストラクタの prototype オブジェクトの hello プロパティに
+            無名関数を登録
+            */
+            console.log(`こんにちは、${this.name}`);
+        }
 
-        counter.increment();
+        const taro = new Person("独習太郎");
+        taro.hello();
 
-        // プライベートプロパティ、メソッドは以下のようにアクセスできない
-        // counter.#count = 10;
-        // counter.#print();
+        const hanako = new Person("独習花子");
+        hanako.hello();
+
+        // #######################################################
+        // prototype と __proto__ は同じオブジェクトを保持する
+        function Test() {}
+        Test.prototype.hello = function() { console.log("こんにちは") };
+        const instance = new Test;
+        console.log(instance.__proto__ === Test.prototype);
+        instance.__proto__.hello();
     </script>
 </body>
 </html>
