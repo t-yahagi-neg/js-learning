@@ -8,23 +8,10 @@
 <body>
     <script>
         // #######################################################
-        // JSON.stringifyを使ってオブジェクトをJSON文字列に変換
-        const target = {a: 0, b: 1, c: {d: 2, e: 0, f: "hello"}};   // 変換対象のオブジェクト
-        console.log(JSON.stringify(target));    // オブジェクトをJSONに変換する
-        console.log(JSON.stringify(target, ["a","b"])); // プロパティがaまたはbのもののみJSONに含む
-        console.log(JSON.stringify(target, ["e","f"])); // 第2階層以降は配列による指定では抽出できない
-
-        function replacer(prop, value) {
-            // 値が数値型かつ1未満のとき
-            if(typeof value === "number" && value < 1) {
-                return; // 値を返さない（JSON文字列に含まれない）
-            }
-            return value;
-        }
-        console.log(JSON.stringify(target,replacer));
-
-        // タブでインデントを挿入
-        console.log(JSON.stringify(target, null, "\t"));
+        // JSON文字列からJavaScriptオブジェクトに変換
+        const json = '{"b":1,"c":{"d":2,"f":"hello"}}'; // JSON文字列
+        const obj = JSON.parse(json);   // オブジェクトに変換
+        console.log(obj.b); // ドット記法で値の取得が可能
     </script>
 </body>
 </html>
