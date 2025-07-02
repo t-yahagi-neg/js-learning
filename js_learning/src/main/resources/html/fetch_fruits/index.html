@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        fetch("sample.json")    // 同じフォルダ内のsample.jsonを相対パスで指定
+        .then(response => response.json())
+        .then(data => {
+            for(const {key, value} of data) {
+                console.log(key + ":" + value);
+            }
+        });
+
+        /* await / async を使うと以下のように記述できる
+        async function myFetch() {
+            const response = await fetch("sample.json");
+            const data = await response.json(); // jsonメソッドもPromiseを返す
+            for (const {key, value} of data) {
+                console.log(key + ":" + value);
+            }
+        }
+        myFetch();
+        */
+    </script>
+</body>
+</html>
