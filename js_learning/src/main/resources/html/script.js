@@ -1,10 +1,8 @@
 function sleep(ms) {
-    const startTime = new Date();
-    // whileループでmsミリ秒分ループを継続
-    while(new Date() - startTime < ms); // msミリ秒経つまでは条件がtrueにならない
-    // whileのブロック{ }は省略
-
-    alert("sleep関数が完了しました。"); // whileループが完了した直後にダイアログを表示
+    // setTImeoutを使って、msミリ秒後にダイアログでメッセージを表示するコールバック関数を実装
+    setTimeout(function() {
+        alert("sleep関数が完了しました。");
+    }, ms);
 }
 
 sleep(3000);    // sleep関数を実行
