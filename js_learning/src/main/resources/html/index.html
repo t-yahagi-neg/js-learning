@@ -8,40 +8,40 @@
 <body>
     <script>
         // #######################################################
-        // メソッドの定義と実行
-        class TestCls {
-            method(arg) {
-                console.log(`引数：[${arg}]でメソッドを実行`);
+        // ゲッター、セッターの使用例
+        class Person {
+            constructor(firstname, lastname) {
+                this.firstname = firstname;
+                this.lastname = lastname;
+            }
+
+            get fullname() {
+                return this.lastname + this.firstname;
+            }
+
+            set age(value) {
+                this._age = Number(value);
+            }
+
+            get age() {
+                return this._age;
             }
         }
 
-        const test = new TestCls;
-        test.method("テスト");
+        const taro = new Person("太郎", "独習");
 
-        // #######################################################
-        // 静的プロパティ、静的メソッドの使用例
-        class Human {
-            static TYPE = "普通の人";
+        // ゲッターを通して値を取得
+        console.log(taro.fullname);
 
-            static staticMove() {
-                console.log(Human.TYPE + "は歩いて移動します。")
-            }
+        // セッターを通して値を設定
+        taro.age = "18";
 
-            constructor(name) {
-                this.name = name;
-            }
+        //
+        console.log(typeof taro.age);
+        console.log(taro.age);
 
-            move() {
-                console.log(this.name + "は歩いて移動します。");
-            }
-        }
-
-        const taro = new Human("太郎");
-        Human.staticMove();
-
-        console.log(Human.TYPE);
-
-        taro.move();
+        //
+        console.log(taro);
     </script>
 </body>
 </html>
