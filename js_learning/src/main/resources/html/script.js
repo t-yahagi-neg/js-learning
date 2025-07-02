@@ -1,39 +1,18 @@
-// アルファベットのa-zを順番に返すイテレータ
-function alphabetIterator(start="a", end="z") {
-    if(start > end) {
-        throw "開始文字は終了文字より前のアルファベットを選んでください。";
-    }
-
-    // splitはStringオブジェクトのメソッドで引数で指定された文字で文字列を分割し、配列として返す
-    // なお、空文字（""）が渡された場合には文字列を1文字ずつ分割する
-    const ALPHABET_ARRAY = "abcdefghijklmnopqrstuvwxyz".split("");  // アルファベットが1文字ずつ格納された配列を定義
-    // ALPHABET_ARRAY = ['a','b','c', ... ,'z'];
-
-    // startとendの文字を配列内で検索し、一致する要素の添字を取得
-    const startIndex = ALPHABET_ARRAY.indexOf(start);
-    const endIndex = ALPHABET_ARRAY.indexOf(end);
-
-    // 配列を指定の範囲で切り取り（endの文字も含めたいので+1する）
-    const targetAlphabet = ALPHABET_ARRAY.slice(startIndex, endIndex + 1);
-
-    return {
-        next() {
-            // 配列のshiftメソッドで配列の先頭から1つずつ要素を取り出す。
-            // 取り出す要素がなくなったとき、shift()はundefinedを返す
-            const alphabet = targetAlphabet.shift();
-
-            return {
-                value: alphabet,    // 取り出された要素をvalueとして返す
-                done: alphabet ? false : true,  // alphabetがundefinedのとき、trueを返す
-            }
-        }
-    }
+function* gen1to3() {
+    let index = 1;
+    yield index;    // 1回目のnext()によってこの地点まで実行が完了
+    index++;
+    yield index;    // 2回目のnext()によってこの地点まで実行が完了
+    index++;
+    return index;   // 3回目のnext()によってこの地点まで実行が加療
 }
 
-const it = alphabetIterator("b","t");
-let nextValue = it.next();
-while(!nextValue.done) {    // doneがtrueのとき、whileループを抜ける
-    console.log(nextValue);
+// ジェネレータ関数の実行はGeneratorオブジェクトの生成を意味する
+const generator = gen1to3();
 
-    nextValue = it.next();    // 次の値をnextValueに格納
-}
+// next()の実行によってジェネレータ関数内のコードが実行される
+console.log(generator.next());
+
+console.log(generator.next());
+
+console.log(generator.next());
