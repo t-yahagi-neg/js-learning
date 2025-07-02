@@ -1,27 +1,29 @@
-let instance = new Promise((resolve, reject) => {
-    // 1秒後に実行
-    setTimeout(() => {
-        // 0～10のランダムな値を取得
-        const rand = Math.floor(Math.random() * 11);
+function promiseFactory(count) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // 渡されてきたcountの値をインクリメント
+            count++;
 
-        if(rand < 5) {
-            // 5未満のとき、エラーとする
-            reject(rand);
-        } else {
-            // それ以外のとき、成功とする
-            resolve(rand);
-        }
-    }, 1000);
-});
+            console.log(`${count}回目のコールです。時刻：[${new Date().toTimeString()}]`);
 
-instance = instance.then(value => {
-    console.log(`5以上の値[${value}]が渡ってきました。`);
-});
+            // ３回目のコールでエラー
+            if(count === 3) {
+                reject(count);
+            } else {
+                // 次のthenのコールバック関数の引数にcountが渡る
+                resolve (count);
+            }
+        }, 1000);
+    });
+}
 
-instance = instance.catch(errorValue => {
-    console.log(`5未満の値[${errorValue}]が渡ってきたためエラー表示。`);
-});
-
-instance = instance.finally(() => {
+promiseFactory(0)
+.then(count => {return promiseFactory(count);})
+.then(count => {return promiseFactory(count);})
+.then(count => {return promiseFactory(count);})
+.then(count => {return promiseFactory(count);})
+.catch(errorCount => {
+    console.log(`エラーに飛びました。現在のカウントは${errorCount}です。`);
+}).finally(() => {
     console.log("処理を終了します。");
 });
