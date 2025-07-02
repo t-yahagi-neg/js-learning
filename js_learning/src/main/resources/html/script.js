@@ -1,18 +1,23 @@
-function wait(ms) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            console.log(`${ms}msの処理が完了しました。`);
-            resolve(ms);
-        }, ms); // 引数のms分だけ待機
-    });
-}
+// resolve()を100ミリ秒後に実行するPromiseインスタンス
+const myResolve = new Promise(resolve => {
+    setTimeout(() => {
+        resolve("resolveが呼ばれました。");
+        console.log("myResolveの実行が終了しました。");
+    }, 300); // rejectと時間を逆にすると順番が変わる
+});
 
-const wait400 = wait(400);
-const wait500 = wait(500);
-const wait600 = wait(600);
+// reject()を200ミリ秒後に実行するPromiseインスタンス
+const myReject = new Promise((_, reject) => {
+    // resolveを使わない為 _ としておく
+    setTimeout(() => {
+        reject("rejectが呼ばれました。");
+        console.log("myRejectの実行が終了しました。");
+    }, 200);
+});
 
-Promise.all([wait500, wait600, wait400])
-    .then(([resolved500, resolved600, resolved400]) => {
-        console.log("すべてのPromiseが完了しました。");
-        console.log(resolved500, resolved600, resolved400)
+Promise.race([myReject, myResolve])
+    .then(value => {
+        console.log(value);
+    }).catch(value => {
+        console.log(value);
     });
