@@ -8,40 +8,24 @@
 <body>
     <script>
         // #######################################################
-        // bind メソッド    bindを利用してthisを束縛
+        // callメソッドの使用例
+        const taro = { name: "太郎" };
+
         function hello(greeting) {
-            console.log(greeting + this.name);
+            console.log(`${greeting}、${this.name}`);
         }
 
-        const taro = { name: "太郎" }
-
-        // bind で this と引数を束縛
-        const helloTaro = hello.bind(taro, "こんにちは、");
-        helloTaro();
+        hello.call(taro, "こんにちは"); // this と引数を束縛して関数 hello を実行！！
 
         // #######################################################
-        // 2秒後に"こんにちは、太郎"とコンソールに表示する
+        // アロー関数に対してはthisの束縛はできない
+        // hello 関数から見たレキシカルスコープはグローバルスコープになる
         window.name = "花子";
 
-        const taro2 = {
-            name: "太郎",
-            hello() {
-                console.log("こんにちは、" + this.name);
-            }
+        const hello2 = () => {
+            console.log("こんにちは、" + this.name);
         }
-
-        // 2秒後に"こんにちは、太郎"とコンソールに表示する
-        setTimeout(taro2.hello.bind(taro), 2000);   // bind で this を taro に固定
-
-        // 3秒後に"こんにちは、花子"とコンソールに表示する
-        setTimeout(taro2.hello, 3000);   // bind なし
-
-        // #######################################################
-        // 無名関数でメソッドの実行文を囲む
-        // 無名関数でtaro.hello();を囲む
-        setTimeout(function() {
-            taro2.hello();
-        }, 2000);   // 2秒後に以下のメッセージが現れる
+        hello2.call({ name: "太郎" });   // アロー関数ではthisを束縛できない！
     </script>
 </body>
 </html>
