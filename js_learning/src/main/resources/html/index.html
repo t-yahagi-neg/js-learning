@@ -8,19 +8,25 @@
 <body>
     <script>
         // #######################################################
-        class Parent {
-            method() { console.log("親クラスのメソッド") }
+        class Counter {
+            #count = 0;
+
+            #print() { console.log(this.#count); }
+
+            increment() {
+                this.#count++;
+                this.#print();
+            }
         }
 
-        class Child extends Parent {
-            method() { console.log("子クラスのメソッド") }
-            myMethod() { this.method() }
-            parentMethod() { super.method() }
-        }
+        const counter = new Counter;
+        counter.increment();
 
-        const obj = new Child;
-        obj.myMethod();
-        obj.parentMethod();
+        counter.increment();
+
+        // プライベートプロパティ、メソッドは以下のようにアクセスできない
+        // counter.#count = 10;
+        // counter.#print();
     </script>
 </body>
 </html>
