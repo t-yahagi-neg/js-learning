@@ -1,18 +1,27 @@
-let val = -1;
+let instance = new Promise((resolve, reject) => {
+    // 1秒後に実行
+    setTimeout(() => {
+        // 0～10のランダムな値を取得
+        const rand = Math.floor(Math.random() * 11);
 
-function timer(callback) {
-    setTimeout(function task() {
-        val = Math.floor(Math.random() * 11);   // 非同期での値の変更
-        callback(val);  // callback関数（operations）に引数valを渡して実行
+        if(rand < 5) {
+            // 5未満のとき、エラーとする
+            reject(rand);
+        } else {
+            // それ以外のとき、成功とする
+            resolve(rand);
+        }
     }, 1000);
-}
+});
 
-// 非同期処理の実行後に実行したい処理を関数内に記述
-function operations(val) {
-    console.log(val);
-}
+instance = instance.then(value => {
+    console.log(`5以上の値[${value}]が渡ってきました。`);
+});
 
-// コールバック関数としてtimer関数に渡す
-timer(operations);
+instance = instance.catch(errorValue => {
+    console.log(`5未満の値[${errorValue}]が渡ってきたためエラー表示。`);
+});
 
-console.log(val);
+instance = instance.finally(() => {
+    console.log("処理を終了します。");
+});
