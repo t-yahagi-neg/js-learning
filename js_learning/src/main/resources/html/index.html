@@ -8,23 +8,11 @@
 <body>
     <script>
         // #######################################################
-        // setInterval を使った繰り返し処理
-        let counter = 0;
-        const intervalID = setInterval(() => {
-            counter++;
-            console.log(counter);
-
-            if(counter === 3){
-                clearInterval(intervalID);  // インターバル処理の終了
-                console.log("インターバル終了");
-            }
-        }, 1000);   // インターバル（間隔）のミリ秒
-
-        // #######################################################
-        // confirm を使った処理
-        if(confirm("画面を閉じますか？")) {
-            /* [OK]のとき */
-            window.close();
+        const targetString = "5341nb;g090-1234-5678f29q0g070-9876-5432nfw"; // 検索対象文字列
+        const mobileNumPattern = /(070|080|090)-\d{4}-\d{4}/g; // 正規表現を定義
+        const mobileNums = targetString.matchAll(mobileNumPattern); // 一致を検索
+        for(const mobileNum of mobileNums) {
+            console.log(mobileNum[0]);  // 取得された携帯番号をコンソールに表示
         }
     </script>
 </body>
