@@ -8,24 +8,22 @@
 <body>
     <script>
         // #######################################################
-        // callメソッドの使用例
         const taro = { name: "太郎" };
 
-        function hello(greeting) {
-            console.log(`${greeting}、${this.name}`);
+        function hello(greeting, name) {
+            console.log(`${greeting}、${name}`);
         }
 
-        hello.call(taro, "こんにちは"); // this と引数を束縛して関数 hello を実行！！
+        hello.apply(null, ["こんにちは","太郎"]);   // thisと引数を束縛して関数helloを実行
 
         // #######################################################
-        // アロー関数に対してはthisの束縛はできない
-        // hello 関数から見たレキシカルスコープはグローバルスコープになる
-        window.name = "花子";
+        // Math.maxで配列内の一番大きな数値を取得する場合
+        const vals = [1,2,3];
+        // 一番大きな数値を確認
+        console.log(Math.max(vals[0],vals[1],vals[2]));
 
-        const hello2 = () => {
-            console.log("こんにちは、" + this.name);
-        }
-        hello2.call({ name: "太郎" });   // アロー関数ではthisを束縛できない！
+        // applyメソッドの場合
+        console.log(Math.max.apply(null, vals));    // thisは使用しない為、nullを第1引数に渡す
     </script>
 </body>
 </html>
