@@ -8,22 +8,18 @@
 <body>
     <script>
         // #######################################################
-        const taro = { name: "太郎" };
-
-        function hello(greeting, name) {
-            console.log(`${greeting}、${name}`);
+        // インスタンスのプロパティの取得・変更
+        class TestCls {
+            constructor(arg) {
+                this.prop = arg;
+            }
         }
 
-        hello.apply(null, ["こんにちは","太郎"]);   // thisと引数を束縛して関数helloを実行
+        const obj = new TestCls("引数");
+        console.log(obj.prop);
 
-        // #######################################################
-        // Math.maxで配列内の一番大きな数値を取得する場合
-        const vals = [1,2,3];
-        // 一番大きな数値を確認
-        console.log(Math.max(vals[0],vals[1],vals[2]));
-
-        // applyメソッドの場合
-        console.log(Math.max.apply(null, vals));    // thisは使用しない為、nullを第1引数に渡す
+        obj.prop = "値の変更";
+        console.log(obj.prop);
     </script>
 </body>
 </html>
