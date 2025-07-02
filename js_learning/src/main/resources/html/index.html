@@ -19,29 +19,29 @@
         test.method("テスト");
 
         // #######################################################
-        class User {
-            constructor(username, password){
-                this.username = username;
-                this.password = password;
+        // 静的プロパティ、静的メソッドの使用例
+        class Human {
+            static TYPE = "普通の人";
+
+            static staticMove() {
+                console.log(Human.TYPE + "は歩いて移動します。")
             }
 
-            login() {
-                console.log(`ログイン[${this.username} / ${this.password}]`);
+            constructor(name) {
+                this.name = name;
             }
 
-            changePassword(pwd) {
-                this.password = pwd;
-                console.log(`パスワードが[${this.password}]に変更されました。`);
+            move() {
+                console.log(this.name + "は歩いて移動します。");
             }
         }
 
-        const taro = new User("独習太郎", "taro-pwd");
+        const taro = new Human("太郎");
+        Human.staticMove();
 
-        taro.login();
+        console.log(Human.TYPE);
 
-        taro.changePassword("new-pwd");
-
-        taro.login();
+        taro.move();
     </script>
 </body>
 </html>
