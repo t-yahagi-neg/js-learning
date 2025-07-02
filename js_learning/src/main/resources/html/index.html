@@ -8,23 +8,30 @@
 <body>
     <script>
         // #######################################################
-        let arry = [1,2,3];
+        // オブジェクトの分割代入はプロパティ名の変数を宣言する。プロパティの順番は関係ない
+        let {banana, orange, apple} = {apple: "リンゴ", banana: "バナナ", orange: "オレンジ"};
+        console.log(banana);
 
-        let [x,y,z] = arry; // 変数x,y,zを宣言し、配列の要素を代入する
-        console.log(x,y,z);
+        // プロパティと変数名を変えたい場合
+        let {banana: b, apple: a} = {apple: "リンゴ", banana: "バナナ"};
+        console.log(b, a);
 
-        let [x1,,z1] = arry;    // 2つ目の要素を空白にする、不要な要素は空白としておくことでスキップできる
-        console.log(x1,z1);
+        // デフォルト値を代入する場合
+        let {banana: b2 = "おいしいバナナ"} = {apple: "リンゴ"};
+        console.log(b2);
 
-        let x2;
-        [x2] = arry;    // 宣言済みの変数に対しても代入できる
-        console.log(x2);
+        // スプレッド演算子（...）と合わせて使うこともできる
+        let {banana: b3 , ...fruits} = {apple: "リンゴ", banana: "バナナ", orange: "オレンジ"};
+        console.log(fruits);
 
-        let [,,,a3=4] = arry;   // デフォルト値を設定できる
+        // 多階層のオブジェクトも展開できる
+        let {fruits: {apple: a3}} = {fruits: {apple: "リンゴ", banana: "バナナ"}};
         console.log(a3);
 
-        let [x4, ...rest] = arry;   // スプレッド演算子（...）と合わせて使うこともできる
-        console.log(x4,rest);
+        // 動的にプロパティ名を指定できる
+        let prop = "apple";
+        let {[prop]: a4 } = {apple: "リンゴ", banana: "バナナ", orange: "オレンジ"};
+        console.log(a4);
     </script>
 </body>
 </html>
