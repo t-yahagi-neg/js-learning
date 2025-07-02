@@ -7,17 +7,28 @@
 </head>
 <body>
     <script>
-        function first() {
-            let firstVal = "first コンテキスト";
-            second();
+        window.name = "花子";
+
+        const taro = {
+            name: "太郎",
+            // hello: function() {}
+            hello() {   // 省略記法
+                console.log("こんにちは、" + this.name);
+            }
         }
 
-        function second() {
-            let secondVal = "second コンテキスト";
-            debugger;   // この地点でコードの実行を停止する
+        // #######################################################
+        // オブジェクトのメソッドをコールバック関数としたとき
+        function greeting(callback) {
+            callback(); // callback 関数（taro.hello）がこの時点で実行される
         }
 
-        first();
+        greeting(taro.hello);   // taro.hello を引数に渡す
+
+        // #######################################################
+        // オブジェクトのメソッドを変数に代入したとき
+        const helloWho = taro.hello;    // メソッドを変数に格納
+        helloWho(); // 関数として実行される
     </script>
 </body>
 </html>
