@@ -1,12 +1,18 @@
 let val = -1;
 
-function timer() {
-    setTimeout(function() {
-        // 0～10のランダムな値を取得
-        val = Math.floor(Math.random() * 11);
+function timer(callback) {
+    setTimeout(function task() {
+        val = Math.floor(Math.random() * 11);   // 非同期での値の変更
+        callback(val);  // callback関数（operations）に引数valを渡して実行
     }, 1000);
 }
 
-timer();
+// 非同期処理の実行後に実行したい処理を関数内に記述
+function operations(val) {
+    console.log(val);
+}
+
+// コールバック関数としてtimer関数に渡す
+timer(operations);
 
 console.log(val);
