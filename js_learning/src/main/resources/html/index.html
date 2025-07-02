@@ -8,13 +8,14 @@
 <body>
     <script>
         // #######################################################
-        // 元の配列の数値に5を掛けた値を保持する配列を作成
+        // 3より大きい数値のみ保持する配列の作成
         const arry = [1,2,3,4,5];
-        function multiply5(value) { return value * 5 }
-        
-        const newArry = arry.map(multiply5);
-        // const newArry = arry.map(value => value * 5); と同じ
+        function gt3(value) {
+            return value > 3;
+        }
 
+        // const newArry = arry.filter(gt3);
+        const newArry = arry.filter(value => value > 3);
         console.log(newArry);
     </script>
 </body>
