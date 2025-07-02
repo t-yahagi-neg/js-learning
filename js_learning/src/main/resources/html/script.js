@@ -16,9 +16,10 @@ const myReject = new Promise((_, reject) => {
     }, 100);
 });
 
-Promise.any([myReject, myResolve])
-    .then(value => {
-        console.log(value);
-    }).catch(value => {
-        console.log(value);
+Promise.allSettled([myReject, myResolve])
+    .then(arry => {
+        for(const {status, value, reason} of arry){
+            //分割代入で各プロパティの値を抽出
+            console.log(`ステータス：[${status}], 値：[${value}], エラー：[${reason}]`);
+        }
     });
