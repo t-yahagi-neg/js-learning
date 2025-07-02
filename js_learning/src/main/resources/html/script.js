@@ -6,9 +6,17 @@ class Iterable {
     }
 }
 
-const fruits = new Iterable();
-fruits.apple = "リンゴ";
-fruits.banana = "バナナ";
-for(const row of fruits) {
+class Person extends Iterable {
+    constructor(name, age, gender){
+        super();
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+}
+
+const taro = new Person("太郎",18,"男");
+
+for(const row of taro) {
     console.log(row[0], row[1]);
 }
