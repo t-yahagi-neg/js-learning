@@ -8,26 +8,23 @@
 <body>
     <script>
         // #######################################################
-        // 昇順にする場合
-        const strArry = ["b","c","a"];
-        strArry.sort();
-        console.log(strArry);
+        let arry = [1,2,3];
 
-        // #######################################################
-        // 比較関数を使って数値を並べ替え
-        function compare(val1,val2) {   // 比較関数には2つの引数が渡ってくる
-            if(val1 < val2) {
-                return -1;  // 戻り値が0より小さい場合、val1をval2の前に配置
-            }
-            if(val1 > val2) {
-                return 1;   // 戻り値が0より大きい場合、val2をval1の前に配置
-            }
-            return 0;       // 戻り値が0の場合、val1、val2の順番をそのまま維持
-        }
+        let [x,y,z] = arry; // 変数x,y,zを宣言し、配列の要素を代入する
+        console.log(x,y,z);
 
-        const arry = [10,2,7,3,9];
-        arry.sort(compare);
-        console.log(arry);
+        let [x1,,z1] = arry;    // 2つ目の要素を空白にする、不要な要素は空白としておくことでスキップできる
+        console.log(x1,z1);
+
+        let x2;
+        [x2] = arry;    // 宣言済みの変数に対しても代入できる
+        console.log(x2);
+
+        let [,,,a3=4] = arry;   // デフォルト値を設定できる
+        console.log(a3);
+
+        let [x4, ...rest] = arry;   // スプレッド演算子（...）と合わせて使うこともできる
+        console.log(x4,rest);
     </script>
 </body>
 </html>
