@@ -1,25 +1,44 @@
-// resolve()を200ミリ秒後に実行するPromiseインスタンス
-const myResolve = new Promise(resolve => {
-    setTimeout(() => {
-        resolve("resolveが呼ばれました。");
-        console.log("myResolveの実行が終了しました。");
-    }, 200);
-});
+function promiseFactory(count) { // この関数はawait / asyncで書き換えることはできない
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            count++;
 
-// reject()を100ミリ秒後に実行するPromiseインスタンス
-// rejectがmyResolveのresolveより前に呼び出される
-const myReject = new Promise((_, reject) => {
-    // resolveを使わない為 _ としておく
-    setTimeout(() => {
-        reject("rejectが呼ばれました。");
-        console.log("myRejectの実行が終了しました。");
-    }, 100);
-});
+            console.log(`${count}回目のコールです。時刻：[${new Date().toTimeString()}]`);
 
-Promise.allSettled([myReject, myResolve])
-    .then(arry => {
-        for(const {status, value, reason} of arry){
-            //分割代入で各プロパティの値を抽出
-            console.log(`ステータス：[${status}], 値：[${value}], エラー：[${reason}]`);
-        }
+            if(count === 3) {
+                reject(count);
+            } else {
+                resolve(count);
+            }
+        }, 1000);
     });
+}
+
+/* このコードをexecute()で書き換える
+promiseFactori(0)
+.then(count=> {return promiseFactory(count);})
+.then(count=> {return promiseFactory(count);})
+.then(count=> {return promiseFactory(count);})
+.catch(errorCount => {
+    console.error(`エラーに飛びました。現在のカウントは${errorCount}です。);
+}).finally(() => {
+    console.log("処理を終了します。");
+});
+*/
+
+// await / asyncを使った書き換え
+async function execute() {  // awaitを内部で使っているためasyncを付ける
+    try {
+        //promiseFactory内のresolveが呼び出されるまで次の処理を実行しない
+        let count = await promiseFactory(0);    // awaitによってresolveの引数の値がcountに代入される
+        count = await promiseFactory(count);
+        count = await promiseFactory(count);
+        count = await promiseFactory(count);
+    } catch (errorCount) {
+        console.log(`エラーに飛びました。現在のカウントは${errorCount}です。`); // Promiseがrejectedのステータスになった場合はcatchブロックに遷移する
+    } finally {
+        console.log("処理を終了します。");
+    }
+}
+
+execute();  // execute()の実行
