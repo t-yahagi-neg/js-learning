@@ -7,22 +7,33 @@
 </head>
 <body>
     <script>
-        // レキスカルスコープに同じ名前の変数が複数存在する場合
-        window.whichVal = "グローバルスコープ";
-        let whichVal = "スクリプトスコープ";
-
-        function outerScope() {
-            let whichVal = "outerScope 関数スコープ";
-
-            function innerScope() {
-                let whichVal = "innerScope 関数スコープ";
-                console.log(whichVal);
+        /* 
+        　クロージャとは、関数内で使用されている変数が歴史家るスコープの変数の値を保持し続ける状態のこと
+        　関数内で使われる引数や変数は、関数が終了すると関数外から参照できないため、不要とみなされて定期的にメモリから削除される
+        */
+        // レキシカルスコープの変数の値を使用している関数が戻り値となる場合
+        function factory(greeting) {
+            function innerFn(name) {
+                console.log(greeting + " " + name);    // レキシカルスコープの変数（greeting）を使用
             }
 
-            innerScope();
+            return innerFn; // 関数 innerFn を実行結果として返す
         }
 
-        outerScope();
+        const hello = factory("こんにちは");
+        hello("太郎");
+
+        // 数値を関数の実行ごとに1を加算し、ログに出力
+        function incrementFactory() {
+            let count = 0;
+            return function() { // 無名関数（関数A）をincrementFactoryの実行結果として返す
+                console.log(++count);   // レキシカルスコープのcountの値を使用
+            }
+        }
+        const increment = incrementFactory();
+        increment();    // この関数の実行は関数Aの実行を意味する
+        increment();
+        increment();
     </script>
 </body>
 </html>
