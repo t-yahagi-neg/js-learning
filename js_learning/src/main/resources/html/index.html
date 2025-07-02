@@ -8,36 +8,19 @@
 <body>
     <script>
         // #######################################################
-        // 継承元クラス（親クラス）
         class Parent {
-            constructor(value) {
-                this.parentProp = value;
-            }
-
-            parentMethod() {
-                console.log("親クラスのメソッド");
-            }
+            method() { console.log("親クラスのメソッド") }
         }
 
-        // 継承先クラス（子クラス）
         class Child extends Parent {
-            constructor(parentProp, childProp) {
-                super(parentProp);
-                this.childProp = childProp;
-            }
-
-            childMethod() {
-                console.log(`子から親にアクセス[${this.parentProp}]`);
-            }
+            method() { console.log("子クラスのメソッド") }
+            myMethod() { this.method() }
+            parentMethod() { super.method() }
         }
 
-        const childObject = new Child("親","子");
-
-        console.log(childObject);
-
-        childObject.parentMethod();
-
-        childObject.childMethod();
+        const obj = new Child;
+        obj.myMethod();
+        obj.parentMethod();
     </script>
 </body>
 </html>
