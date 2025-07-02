@@ -8,12 +8,23 @@
 <body>
     <script>
         // #######################################################
-        const targetString = "5341nb;g090-1234-5678f29q0g070-9876-5432nfw"; // 検索対象文字列
-        const mobileNumPattern = /(070|080|090)-\d{4}-\d{4}/g; // 正規表現を定義
-        const mobileNums = targetString.matchAll(mobileNumPattern); // 一致を検索
-        for(const mobileNum of mobileNums) {
-            console.log(mobileNum[0]);  // 取得された携帯番号をコンソールに表示
+        // JSON.stringifyを使ってオブジェクトをJSON文字列に変換
+        const target = {a: 0, b: 1, c: {d: 2, e: 0, f: "hello"}};   // 変換対象のオブジェクト
+        console.log(JSON.stringify(target));    // オブジェクトをJSONに変換する
+        console.log(JSON.stringify(target, ["a","b"])); // プロパティがaまたはbのもののみJSONに含む
+        console.log(JSON.stringify(target, ["e","f"])); // 第2階層以降は配列による指定では抽出できない
+
+        function replacer(prop, value) {
+            // 値が数値型かつ1未満のとき
+            if(typeof value === "number" && value < 1) {
+                return; // 値を返さない（JSON文字列に含まれない）
+            }
+            return value;
         }
+        console.log(JSON.stringify(target,replacer));
+
+        // タブでインデントを挿入
+        console.log(JSON.stringify(target, null, "\t"));
     </script>
 </body>
 </html>
