@@ -6,32 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-        // #######################################################
-        // オブジェクトの分割代入はプロパティ名の変数を宣言する。プロパティの順番は関係ない
-        let {banana, orange, apple} = {apple: "リンゴ", banana: "バナナ", orange: "オレンジ"};
-        console.log(banana);
-
-        // プロパティと変数名を変えたい場合
-        let {banana: b, apple: a} = {apple: "リンゴ", banana: "バナナ"};
-        console.log(b, a);
-
-        // デフォルト値を代入する場合
-        let {banana: b2 = "おいしいバナナ"} = {apple: "リンゴ"};
-        console.log(b2);
-
-        // スプレッド演算子（...）と合わせて使うこともできる
-        let {banana: b3 , ...fruits} = {apple: "リンゴ", banana: "バナナ", orange: "オレンジ"};
-        console.log(fruits);
-
-        // 多階層のオブジェクトも展開できる
-        let {fruits: {apple: a3}} = {fruits: {apple: "リンゴ", banana: "バナナ"}};
-        console.log(a3);
-
-        // 動的にプロパティ名を指定できる
-        let prop = "apple";
-        let {[prop]: a4 } = {apple: "リンゴ", banana: "バナナ", orange: "オレンジ"};
-        console.log(a4);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
