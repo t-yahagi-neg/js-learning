@@ -8,15 +8,26 @@
 <body>
     <script>
         // #######################################################
-        // 3より大きい数値のみ保持する配列の作成
-        const arry = [1,2,3,4,5];
-        function gt3(value) {
-            return value > 3;
+        // 昇順にする場合
+        const strArry = ["b","c","a"];
+        strArry.sort();
+        console.log(strArry);
+
+        // #######################################################
+        // 比較関数を使って数値を並べ替え
+        function compare(val1,val2) {   // 比較関数には2つの引数が渡ってくる
+            if(val1 < val2) {
+                return -1;  // 戻り値が0より小さい場合、val1をval2の前に配置
+            }
+            if(val1 > val2) {
+                return 1;   // 戻り値が0より大きい場合、val2をval1の前に配置
+            }
+            return 0;       // 戻り値が0の場合、val1、val2の順番をそのまま維持
         }
 
-        // const newArry = arry.filter(gt3);
-        const newArry = arry.filter(value => value > 3);
-        console.log(newArry);
+        const arry = [10,2,7,3,9];
+        arry.sort(compare);
+        console.log(arry);
     </script>
 </body>
 </html>
