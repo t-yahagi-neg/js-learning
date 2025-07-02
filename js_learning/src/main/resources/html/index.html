@@ -8,18 +8,40 @@
 <body>
     <script>
         // #######################################################
-        // インスタンスのプロパティの取得・変更
+        // メソッドの定義と実行
         class TestCls {
-            constructor(arg) {
-                this.prop = arg;
+            method(arg) {
+                console.log(`引数：[${arg}]でメソッドを実行`);
             }
         }
 
-        const obj = new TestCls("引数");
-        console.log(obj.prop);
+        const test = new TestCls;
+        test.method("テスト");
 
-        obj.prop = "値の変更";
-        console.log(obj.prop);
+        // #######################################################
+        class User {
+            constructor(username, password){
+                this.username = username;
+                this.password = password;
+            }
+
+            login() {
+                console.log(`ログイン[${this.username} / ${this.password}]`);
+            }
+
+            changePassword(pwd) {
+                this.password = pwd;
+                console.log(`パスワードが[${this.password}]に変更されました。`);
+            }
+        }
+
+        const taro = new User("独習太郎", "taro-pwd");
+
+        taro.login();
+
+        taro.changePassword("new-pwd");
+
+        taro.login();
     </script>
 </body>
 </html>
