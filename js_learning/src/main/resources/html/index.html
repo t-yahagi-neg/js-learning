@@ -8,40 +8,36 @@
 <body>
     <script>
         // #######################################################
-        // ゲッター、セッターの使用例
-        class Person {
-            constructor(firstname, lastname) {
-                this.firstname = firstname;
-                this.lastname = lastname;
+        // 継承元クラス（親クラス）
+        class Parent {
+            constructor(value) {
+                this.parentProp = value;
             }
 
-            get fullname() {
-                return this.lastname + this.firstname;
-            }
-
-            set age(value) {
-                this._age = Number(value);
-            }
-
-            get age() {
-                return this._age;
+            parentMethod() {
+                console.log("親クラスのメソッド");
             }
         }
 
-        const taro = new Person("太郎", "独習");
+        // 継承先クラス（子クラス）
+        class Child extends Parent {
+            constructor(parentProp, childProp) {
+                super(parentProp);
+                this.childProp = childProp;
+            }
 
-        // ゲッターを通して値を取得
-        console.log(taro.fullname);
+            childMethod() {
+                console.log(`子から親にアクセス[${this.parentProp}]`);
+            }
+        }
 
-        // セッターを通して値を設定
-        taro.age = "18";
+        const childObject = new Child("親","子");
 
-        //
-        console.log(typeof taro.age);
-        console.log(taro.age);
+        console.log(childObject);
 
-        //
-        console.log(taro);
+        childObject.parentMethod();
+
+        childObject.childMethod();
     </script>
 </body>
 </html>
