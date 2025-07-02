@@ -7,23 +7,22 @@
 </head>
 <body>
     <script>
-        let scriptVal = "スクリプトスコープの変数"
+        // レキスカルスコープに同じ名前の変数が複数存在する場合
+        window.whichVal = "グローバルスコープ";
+        let whichVal = "スクリプトスコープ";
 
-        function fn() {
-            let fnVal = "関数スコープの変数";
-            if (true) {
-                console.log(scriptVal, fnVal);  // scriptVal, fnValは、ともにレキスカルスコープの変数であるため、参照可能
-                console.log(scriptFn());    // scriptFn()は、レキスカルスコープであるグローバルスコープの関数のため、実行可能
-                console.log(sVal);  // sVal は、scriptFn 内で宣言されているので、レキスカルスコープの変数ではないため、エラー
+        function outerScope() {
+            let whichVal = "outerScope 関数スコープ";
+
+            function innerScope() {
+                let whichVal = "innerScope 関数スコープ";
+                console.log(whichVal);
             }
+
+            innerScope();
         }
 
-        function scriptFn() {
-            let sVal = "scriptFn の変数";
-            return "scriptFn の実行結果";
-        }
-
-        fn();
+        outerScope();
     </script>
 </body>
 </html>
