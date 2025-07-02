@@ -8,19 +8,14 @@
 <body>
     <script>
         // #######################################################
-        let data = localStorage.getItem("data");    // ローカルストレージからデータを取得
-        data = JSON.parse(data);                    // 取得したJSON文字列をオブジェクトに変換
+        // 元の配列の数値に5を掛けた値を保持する配列を作成
+        const arry = [1,2,3,4,5];
+        function multiply5(value) { return value * 5 }
+        
+        const newArry = arry.map(multiply5);
+        // const newArry = arry.map(value => value * 5); と同じ
 
-        if(data === null) {                         // dataがローカルストレージから取得できなかった場合
-            data = {val: 0};                        // デフォルト値を設定
-        }
-
-        console.log(data.val);                      // data.valの状態をコンソールに表示
-
-        data.val++;                                 // data.valに1加算
-
-        const json = JSON.stringify(data);          // JSON形式でローカルストレージにデータを保存
-        localStorage.setItem("data", json);         // 
+        console.log(newArry);
     </script>
 </body>
 </html>
