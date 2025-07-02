@@ -7,33 +7,17 @@
 </head>
 <body>
     <script>
-        /* 
-        　クロージャとは、関数内で使用されている変数が歴史家るスコープの変数の値を保持し続ける状態のこと
-        　関数内で使われる引数や変数は、関数が終了すると関数外から参照できないため、不要とみなされて定期的にメモリから削除される
-        */
-        // レキシカルスコープの変数の値を使用している関数が戻り値となる場合
-        function factory(greeting) {
-            function innerFn(name) {
-                console.log(greeting + " " + name);    // レキシカルスコープの変数（greeting）を使用
-            }
-
-            return innerFn; // 関数 innerFn を実行結果として返す
+        function first() {
+            let firstVal = "first コンテキスト";
+            second();
         }
 
-        const hello = factory("こんにちは");
-        hello("太郎");
-
-        // 数値を関数の実行ごとに1を加算し、ログに出力
-        function incrementFactory() {
-            let count = 0;
-            return function() { // 無名関数（関数A）をincrementFactoryの実行結果として返す
-                console.log(++count);   // レキシカルスコープのcountの値を使用
-            }
+        function second() {
+            let secondVal = "second コンテキスト";
+            debugger;   // この地点でコードの実行を停止する
         }
-        const increment = incrementFactory();
-        increment();    // この関数の実行は関数Aの実行を意味する
-        increment();
-        increment();
+
+        first();
     </script>
 </body>
 </html>
