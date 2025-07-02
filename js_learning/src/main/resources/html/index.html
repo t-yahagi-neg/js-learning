@@ -7,28 +7,41 @@
 </head>
 <body>
     <script>
+        // #######################################################
+        // bind メソッド    bindを利用してthisを束縛
+        function hello(greeting) {
+            console.log(greeting + this.name);
+        }
+
+        const taro = { name: "太郎" }
+
+        // bind で this と引数を束縛
+        const helloTaro = hello.bind(taro, "こんにちは、");
+        helloTaro();
+
+        // #######################################################
+        // 2秒後に"こんにちは、太郎"とコンソールに表示する
         window.name = "花子";
 
-        const taro = {
+        const taro2 = {
             name: "太郎",
-            // hello: function() {}
-            hello() {   // 省略記法
+            hello() {
                 console.log("こんにちは、" + this.name);
             }
         }
 
-        // #######################################################
-        // オブジェクトのメソッドをコールバック関数としたとき
-        function greeting(callback) {
-            callback(); // callback 関数（taro.hello）がこの時点で実行される
-        }
+        // 2秒後に"こんにちは、太郎"とコンソールに表示する
+        setTimeout(taro2.hello.bind(taro), 2000);   // bind で this を taro に固定
 
-        greeting(taro.hello);   // taro.hello を引数に渡す
+        // 3秒後に"こんにちは、花子"とコンソールに表示する
+        setTimeout(taro2.hello, 3000);   // bind なし
 
         // #######################################################
-        // オブジェクトのメソッドを変数に代入したとき
-        const helloWho = taro.hello;    // メソッドを変数に格納
-        helloWho(); // 関数として実行される
+        // 無名関数でメソッドの実行文を囲む
+        // 無名関数でtaro.hello();を囲む
+        setTimeout(function() {
+            taro2.hello();
+        }, 2000);   // 2秒後に以下のメッセージが現れる
     </script>
 </body>
 </html>
