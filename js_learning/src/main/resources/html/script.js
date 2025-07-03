@@ -1,5 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
-    /* この関数内のコードはDOMツリー全体の構築が完了してから実行されます。 */
-    const afterEl = document.querySelector("#after");
-    console.log(afterEl.textContent);
-})
+const testEl = document.querySelector("#test");
+console.log(`innerHTML: ${testEl.innerHTML}`);
+
+setTimeout(() => {
+    testEl.innerHTML = "<h1>Good World</h1>";
+}, 2000);
