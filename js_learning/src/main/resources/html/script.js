@@ -1,28 +1,3 @@
-// <body> に挿入したいHTMLの構造を文字列で定義
-const htmlStr = `
-    <article id="article">
-        <h1 id="article-title">記事のタイトル</h1>
-            <div class="tag-area">
-                <span>タグ：</span><span>スポーツ</span><span>バスケ</span>
-            </div>
-            <div class="article-body">記事の本文</div>
-            <div id="recommend">
-                <h2>おすすめの記事</h2>
-                <a href="#">他の記事</a>
-            </div>
-        </article>
-    `;
-
-// HTML文字列をElementオブジェクトに変換する関数
-function htmlStrToElement(htmlStr) {
-    // ダミーの<div>要素を作成
-    const dummyDiv = document.createElement("div");
-    // HTML文字列がElementに変換される
-    dummyDiv.innerHTML = htmlStr;
-    // ダミーの<div>要素の子要素を返す
-    return dummyDiv.firstElementChild;
-}
-
-// HTML文字列からElementオブジェクトを取得
-const targetNewElement = htmlStrToElement(htmlStr);
+const tmpl = document.querySelector("#tmpl");
+const targetNewElement = tmpl.content;
 document.body.prepend(targetNewElement);
