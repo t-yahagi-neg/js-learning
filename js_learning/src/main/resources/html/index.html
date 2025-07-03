@@ -2,21 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <script src="script.js"></script>
     <title>Document</title>
 </head>
-<body>
-    <div id="before">この要素はscriptタグより前にあるため取得可能です。</div>
-
-    <script>
-        const beforeEl = document.querySelector("#before");
-        console.log(beforeEl.textContent);
-
-        const afterEl = document.querySelector("#after");
-        console.log(afterEl.textContent);
-    </script>
-
-    <div id="after">この要素はscriptタグより後にあるため取得できません。</div>
+<body> 
+    <div id="after">script タグの後に記載したHTMLタグも取得可能です。</div> 
 </body>
 </html>
