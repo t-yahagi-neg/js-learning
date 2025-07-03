@@ -7,13 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <section id="container">
-        <span class="target-cls"></span>
-        <div class="list">
-            <input name="child1">
-            <input name="child2">
-        </div>
-        <p class="target-cls"></p>
-    </section>>
+    <div id="before">この要素はscriptタグより前にあるため取得可能です。</div>
+
+    <script>
+        const beforeEl = document.querySelector("#before");
+        console.log(beforeEl.textContent);
+
+        const afterEl = document.querySelector("#after");
+        console.log(afterEl.textContent);
+    </script>
+
+    <div id="after">この要素はscriptタグより後にあるため取得できません。</div>
 </body>
 </html>
