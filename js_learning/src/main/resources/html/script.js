@@ -1,19 +1,19 @@
-// Element の取得
-const div1 = document.querySelector("#div1");
-const div2 = document.querySelector("#div2");
 const button = document.querySelector("button");
+const div = document.querySelector("div");
+const section = document.querySelector("section");
 
-// window に click イベントを登録 (capture: true として登録)
-window.addEventListener("click", () => {
-    console.log("window の click イベント");
-}, {capture: true});
-
-// div2 に click イベントを登録
-div2.addEventListener("click", () => {
-    console.log("div2 の click イベント");
+// button に対するアクションを登録
+button.addEventListener("click", (event) => {
+    console.log("button の click イベントが実行されました。");
 });
 
-// button に click イベントを登録
-button.addEventListener("click", () => {
-    console.log("button の click イベント");
+// div に対するアクションを登録
+div.addEventListener("click", (event) => {
+    console.log("div の click イベントが実行されました。");
 });
+
+// section に対するアクションを登録
+section.addEventListener("click", (event) => {
+    event.stopPropagation();    // イベント伝播を停止
+    console.log("section の click イベントが実行されました。");
+}, {capture: true});    // キャプチャリングフェーズアクションで実行
