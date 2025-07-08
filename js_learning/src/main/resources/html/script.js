@@ -1,11 +1,19 @@
-const targetEl = document.querySelector("div");
-const colorBtn = document.querySelector("#color");
+// Element の取得
+const div1 = document.querySelector("#div1");
+const div2 = document.querySelector("#div2");
+const button = document.querySelector("button");
 
-function colorChange(event) {
-    targetEl.style.color = "#ff0000";
-}
+// window に click イベントを登録 (capture: true として登録)
+window.addEventListener("click", () => {
+    console.log("window の click イベント");
+}, {capture: true});
 
-// アクションの登録
-colorBtn.addEventListener("click", colorChange);
-// アクションの解除（うまくいく）
-colorBtn.removeEventListener("click", colorChange);
+// div2 に click イベントを登録
+div2.addEventListener("click", () => {
+    console.log("div2 の click イベント");
+});
+
+// button に click イベントを登録
+button.addEventListener("click", () => {
+    console.log("button の click イベント");
+});
