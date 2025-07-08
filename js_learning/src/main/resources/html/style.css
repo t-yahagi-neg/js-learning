@@ -1,0 +1,9 @@
+/* class 属性による指定 */
+.target-class {
+    color: red; /* 文字を赤色に設定 */
+    background-color: blue; /* 背景を青色に設定 */
+}
+/* id 属性による指定 */
+#target-id{
+    text-decoration: underline; /* 文字に下線を適用 */
+}
