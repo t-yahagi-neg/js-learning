@@ -1,4 +1,6 @@
-setTimeout(() => {
-    const div = document.querySelector("div");
-    div.classList.add("preparedClass"); /* preparedClass という文字列を class 属性に追加する */
-}, 2000);   /* 2秒後にコールバック関数を実行 */
+const div = document.querySelector("div");
+const button = document.querySelector("button");
+
+button.onclick = function() {   // button のクリックイベントにアクションを登録
+    div.classList.toggle("preparedClass"); // preparedClass という文字列を class 属性に対して付け外しする
+};
