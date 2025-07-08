@@ -1,10 +1,17 @@
-function preventScroll(event) {
-    // スクロール処理を停止
-    event.preventDefault();
-}
+const button = document.querySelector("button");
+const span = document.querySelector("span");
 
-// touchmoveイベントのデフォルト処理 (スクロール処理) を阻止
-document.addEventListener("touchMove", preventScroll, {passive:false});
+let count = 0;
+button.addEventListener("click", function(event) {
+    count++;
+    span.textContent = count;
+});
 
-// wheelイベントのデフォルト処理 (スクロール処理) を阻止
-document.addEventListener("wheel", preventScroll, {passive: false});
+// Event オブジェクトをインスタンス化
+const myEvent = new Event("click");
+
+// 1 秒間隔で click イベントを発火
+setInterval(() => {
+    // イベントを発火
+    button.dispatchEvent(myEvent);
+}, 1000);
