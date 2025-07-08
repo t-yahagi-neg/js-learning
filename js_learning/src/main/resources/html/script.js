@@ -1,9 +1,10 @@
-// #container (sectionタグにアクションを登録する)
-const containerEl = document.querySelector("#container");
+function preventScroll(event) {
+    // スクロール処理を停止
+    event.preventDefault();
+}
 
-containerEl.addEventListener("click", function(event){
-    // currentTargetは常にアクションを登録した要素が格納される
-    console.log(`currentTarget:[${event.currentTarget.nodeName}]`);
-    // targetはイベントが発生した要素が格納される
-    console.log(`target:[${event.target.nodeName}]`);
-})
+// touchmoveイベントのデフォルト処理 (スクロール処理) を阻止
+document.addEventListener("touchMove", preventScroll, {passive:false});
+
+// wheelイベントのデフォルト処理 (スクロール処理) を阻止
+document.addEventListener("wheel", preventScroll, {passive: false});
