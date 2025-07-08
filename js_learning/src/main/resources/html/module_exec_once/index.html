@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        // モジュールを読み込んだ時、読込先のモジュールのトップレベルのコードは、初回読み込み時のみ実行される
+        import "./module.js";
+        import "./module.js";
+    </script>
+</body>
+</html>

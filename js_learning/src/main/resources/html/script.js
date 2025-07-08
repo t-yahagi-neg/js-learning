@@ -1,6 +1,22 @@
-const div = document.querySelector("div");
-const button = document.querySelector("button");
+// 名前付きエクスポートをインポート
+import { exportedVariable, exportedFunction, ExportedClass } from "/path/to/module.js";
 
-button.onclick = function() {   // button のクリックイベントにアクションを登録
-    div.classList.toggle("preparedClass"); // preparedClass という文字列を class 属性に対して付け外しする
-};
+// 別名を付けてインポート
+import { exportedName as importedName } from "/path/to/module.js";
+
+// デフォルトエクスポートと名前付きエクスポートをオブジェクト (moduleObject) のプロパティとしてインポート
+// デフォルトエクスポートは default プロパティに格納される
+import * as moduleObject from "/path/to/module.js";
+
+// デフォルトエクスポート (defaultExport) を読み込む
+import defaultExport from "/path/to/module.js";
+
+// デフォルトエクスポート (defaultExport) と名前付きエクスポート (namedExport1, namedExport2) をそれぞれインポート
+import defaultExport, { namedExport1, namedExport2 } from "/path/to/module.js";
+
+// デフォルトエクスポート (defaultExport) と名前付きエクスポートをオブジェクト (moduleObject) のプロパティとしてそれぞれインポート
+import defaultExport, * as moduleObject from "/path/to/module.js";
+
+// インポートなしにモジュール (module.js) 内のコードを一度だけ実行
+import "/path/to/module.js";
+

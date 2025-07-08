@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Promise オブジェクトでラップされたモジュールオブジェクトが渡される
+        let promise = import("./module.js");
+        promise.then(moduleObject => {
+            // module.js で export された機能が moduleObject のプロパティとして使用可能
+            moduleObject.exportedFn();
+        });
+
+        // await / async を使うことも可能
+        async function asyncFunction() {
+            // 分割代入で exportedFn を抽出
+            let {exportedFn} = await import("./module.js");
+            // エクスポートされた関数を実行可能
+            exportedFn();
+        }
+        asyncFunction();
+    </script>
+</body>
+</html>

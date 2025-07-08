@@ -1,0 +1,1 @@
+console.log("module.js のトップレベルのコードが実行されました。");

@@ -1,5 +1,7 @@
-/* 付与する予定のスタイルを CSS であらかじめ定義 */
-.preparedClass {
-    color: red;
-    background-color: blue;
+body {
+    margin: 0;
+}
+body {
+    background: linear-gradient(#9198e5, #e66465);
+    height: 200vh;
 }
