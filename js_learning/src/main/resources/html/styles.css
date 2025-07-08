@@ -1,0 +1,6 @@
+div {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    transform: scale(5);    /* <div>要素を5倍にして拡大 */
+}
