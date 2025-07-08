@@ -1,18 +1,22 @@
-// 無名関数をデフォルトエクスポート
-// export default function(){}
+// 名前付きエクスポートをインポート
+import { exportedVariable, exportedFunction, ExportedClass } from "/path/to/module.js";
 
-// アロー関数をデフォルトエクスポート
-//export default ()=>{}
+// 別名を付けてインポート
+import { exportedName as importedName } from "/path/to/module.js";
 
-// 名前を付けても import の際には任意の名前で使うことが可能
-// export default function exportedFunction(){}
+// デフォルトエクスポートと名前付きエクスポートをオブジェクト (moduleObject) のプロパティとしてインポート
+// デフォルトエクスポートは default プロパティに格納される
+import * as moduleObject from "/path/to/module.js";
 
-// クラスのエクスポート
-// export default class{}
+// デフォルトエクスポート (defaultExport) を読み込む
+import defaultExport from "/path/to/module.js";
 
-// 名前を付けても import の際には任意の名前で使うことが可能
-// export default class ExportedClass{}
+// デフォルトエクスポート (defaultExport) と名前付きエクスポート (namedExport1, namedExport2) をそれぞれインポート
+import defaultExport, { namedExport1, namedExport2 } from "/path/to/module.js";
 
-// default という名前を付けるとデフォルトエクスポートとしてエクスポートされる
-function normalFunction(){}
-export {normalFunction as default};
+// デフォルトエクスポート (defaultExport) と名前付きエクスポートをオブジェクト (moduleObject) のプロパティとしてそれぞれインポート
+import defaultExport, * as moduleObject from "/path/to/module.js";
+
+// インポートなしにモジュール (module.js) 内のコードを一度だけ実行
+import "/path/to/module.js";
+
