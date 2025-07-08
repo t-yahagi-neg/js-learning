@@ -1,9 +1,9 @@
-// すべてのあんた―タグ (a) を取得
-const links = document.querySelectorAll("a");
+// #container (sectionタグにアクションを登録する)
+const containerEl = document.querySelector("#container");
 
-// すべてのアンカータグに対してリンク無効化のアクションを追加
-links.forEach(link => link.addEventListener("click", event => {
-    event.preventDefault(); // ブラウザのデフォルト処理を無効化
-    alert(event.currentTarget.textContent); // アラートの表示
-    })
-);
+containerEl.addEventListener("click", function(event){
+    // currentTargetは常にアクションを登録した要素が格納される
+    console.log(`currentTarget:[${event.currentTarget.nodeName}]`);
+    // targetはイベントが発生した要素が格納される
+    console.log(`target:[${event.target.nodeName}]`);
+})
