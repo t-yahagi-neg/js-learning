@@ -1,4 +1,32 @@
-const btn = document.querySelector("button");
-const div = document.querySelector("div");
-btn.addEventListener("click", () => { console.log("button") });
-div.addEventListener("click", () => { console.log("div") });
+// 変数のエクスポート
+export let variable = "変数宣言の前に export キーワードを付けます。";
+export const constant = "定数もエクスポート可能です。";
+
+// 複数の変数を一括でエクスポート
+export let val1 = "値1", val2 = "値2";
+
+// 関数、ジェネレータ関数、クラスのエクスポート
+export function exportedFunction(){}
+export function* exportedGenerator(){}
+export class ExportedClass{}
+
+// モジュール内で定義した変数、関数、クラスの一括エクスポート
+let normalVariable = "モジュール内で宣言した変数";
+function normalFunction(){}
+class NormalClass{}
+export {normalVariable, normalFunction, NormalClass};
+
+// 別名を指定してエクスポート (as で別名を付ける)
+export {
+    normalVariable as publicVariable,
+    normalFunction as publicFunction,
+    NormalClass as PublicClass,
+};
+
+// 分割代入しながらエクスポート (オブジェクトから分割代入でエクスポート)
+const normalObject = {
+    normalVal: normalVariable,
+    normalFn: normalFunction,
+    NormalCls: NormalClass
+}
+export const {normalVal, normalFn, NormalCls} = normalObject;
