@@ -1,6 +1,17 @@
-const div = document.querySelector("div");
-const button = document.querySelector("button");
+// 数値の初期化
+let count = 0;
 
-button.onclick = function() {   // button のクリックイベントにアクションを登録
-    div.classList.toggle("preparedClass"); // preparedClass という文字列を class 属性に対して付け外しする
+// Elementの取得
+const number = document.querySelector("#number");
+const plusBtn = document.querySelector("#plus");
+const minusBtn = document.querySelector("#minus");
+
+plusBtn.onclick = function(event) { // #plus ボタンのクリック時のアクションを定義
+    count++; // count に 1 を加算
+    number.textContent = count; // #number のテキストを更新
+};
+
+minusBtn.onclick = function(event) { // #minus ボタンのクリック時のアクションを定義
+    count--;    // count から 1 を減産
+    number.textContent = count; // #number のテキストを更新
 };
