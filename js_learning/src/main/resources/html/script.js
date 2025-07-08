@@ -1,17 +1,28 @@
-// 数値の初期化
-let count = 0;
+const targetEl = document.querySelector("div");
+const colorBtn = document.querySelector("#color");
+const bgColorBtn = document.querySelector("#bg-color");
+const allColorBtn = document.querySelector("#all-color");
+const resetBtn = document.querySelector("#reset-color");
+// 文字色を変更するアクション
+function colorChange(event) {
+    // 文字色を赤色に変更
+    targetEl.style.color = "#ff0000";
+}
+// 背景色を変更するアクション
+function bgColorChange(event) {
+    // 背景色を青色に変更
+    targetEl.style.backgroundColor = "blue";
+}
+// スタイルをリセットするアクション
+function reset(event) {
+    targetEl.style.backgroundColor = "";
+    targetEl.style.color = "";
+}
 
-// Elementの取得
-const number = document.querySelector("#number");
-const plusBtn = document.querySelector("#plus");
-const minusBtn = document.querySelector("#minus");
-
-plusBtn.addEventListener("click", function(event) { // クリックイベントにアクションを登録
-    count++; // 数値を 1 加算する
-    number.textContent = count; // #number のテキストを更新
-});
-
-minusBtn.addEventListener("click", function(event) { // クリックイベントにアクションを登録
-    count--;    // 数値を 1 減算する
-    number.textContent = count; // #number のテキストを更新
-});
+// イベントリスナにアクションを登録
+colorBtn.addEventListener("click", colorChange);
+bgColorBtn.addEventListener("click", bgColorChange);
+allColorBtn.addEventListener("click", colorChange);     // #all-color要素には関数を2つ登録
+allColorBtn.addEventListener("click", bgColorChange);   //
+// スタイルのリセット
+resetBtn.addEventListener("click", reset);
