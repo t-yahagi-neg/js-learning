@@ -1,18 +1,9 @@
-const targetEl = document.querySelector("div");
-const allColorBtn = document.querySelector("#all-color");
+// すべてのあんた―タグ (a) を取得
+const links = document.querySelectorAll("a");
 
-// 文字色を変更するアクション
-function colorChange(event) {
-    event.stopImmediatePropagation();   // 皇族のアクションへのイベント伝播を停止
-    targetEl.style.color = "#ff0000";   // 文字色を赤色に変更
-}
-
-// 背景色を変更するアクション
-function bgColorChange(event) {
-    targetEl.style.backgroundColor = "blue";    // 背景色を青色に変更
-}
-
-// 関数を2つ登録可能
-// アクションは登録された順番 (colorChange → bgColorChange) で実行される
-allColorBtn.addEventListener("click", colorChange);
-allColorBtn.addEventListener("click", bgColorChange)
+// すべてのアンカータグに対してリンク無効化のアクションを追加
+links.forEach(link => link.addEventListener("click", event => {
+    event.preventDefault(); // ブラウザのデフォルト処理を無効化
+    alert(event.currentTarget.textContent); // アラートの表示
+    })
+);
