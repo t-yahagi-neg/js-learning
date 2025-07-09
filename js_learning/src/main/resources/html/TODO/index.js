@@ -17,5 +17,14 @@ function add() {
         li.classList.add("list-group-item");
         ul.appendChild(li);
         input.value = "";
+        saveData();
     }
+}
+
+function saveData() {
+    // 画面に表示されたTODOの値を取ってくる
+    // liタグを全て取得する
+    const lists = document.querySelectorAll("li");
+    // 動作確認
+    console.log(lists);
 }
