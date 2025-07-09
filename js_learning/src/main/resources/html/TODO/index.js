@@ -27,13 +27,16 @@ function add(todo) {
         li.innerText = todoText;
         li.classList.add("list-group-item");
 
-        // 右クリックしたら
         li.addEventListener("contextmenu", function(event) {
-            // 右クリックのメニューを表示しないようにする
             event.preventDefault();
             li.remove();
             saveData();
         });
+
+        li.addEventListener("click", function() {
+            li.classList.toggle("text-decoration-line-through");
+        });
+
         ul.appendChild(li);
         input.value = "";
         saveData();
