@@ -4,7 +4,10 @@ const form = document.getElementById("form");
 const input = document.getElementById("input");
 
 // formでEnter(submit)した時のイベント
-form.addEventListener("submit", function() {
+form.addEventListener("submit", function(event) {
+    // デフォルトのイベントを発生しないようにする
+    // フォームをsubmitした時にブラウザをリロードしないようにする
+    event.preventDefault();
     // formのinputの値を取得する
     // inputの値が正しく取得できているかをコンソールに出力して確認する
     console.log(input.value);
