@@ -22,11 +22,11 @@ function add() {
 }
 
 function saveData() {
-    // 画面に表示されたTODOの値を取ってくる
-    // liタグを全て取得する
     const lists = document.querySelectorAll("li");
+    let todos = [];
     lists.forEach(list => {
-        // リストの各要素にアクセスできているか確認
-        console.log(list.innerText);
-    })
+        todos.push(list.innerText);
+    });
+    // ローカルストレージに保管、JSON型にする
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
