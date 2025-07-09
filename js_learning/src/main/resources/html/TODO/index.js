@@ -1,10 +1,9 @@
 const form = document.getElementById("form");
 const input = document.getElementById("input");
 const ul = document.getElementById("ul");
-// ローカルストレージから値を取得、JSONから配列に
+
 const todos = JSON.parse(localStorage.getItem("todos"));
 
-// todosが空でなければ
 if (todos) {
     todos.forEach(todo => {
         add(todo);
@@ -27,6 +26,14 @@ function add(todo) {
         const li = document.createElement("li");
         li.innerText = todoText;
         li.classList.add("list-group-item");
+
+        // 右クリックしたら
+        li.addEventListener("contextmenu", function(event) {
+            // 右クリックのメニューを表示しないようにする
+            event.preventDefault();
+            li.remove();
+            saveData();
+        });
         ul.appendChild(li);
         input.value = "";
         saveData();
@@ -39,6 +46,5 @@ function saveData() {
     lists.forEach(list => {
         todos.push(list.innerText);
     });
-    // ローカルストレージに保存する、JSON型にする
     localStorage.setItem("todos", JSON.stringify(todos));
 }
