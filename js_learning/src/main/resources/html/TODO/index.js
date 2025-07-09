@@ -1,14 +1,24 @@
-// id="form" を指定
 const form = document.getElementById("form");
-// id="input" を指定
 const input = document.getElementById("input");
+const ul = document.getElementById("ul");
 
 // formでEnter(submit)した時のイベント
 form.addEventListener("submit", function(event) {
     // デフォルトのイベントを発生しないようにする
-    // フォームをsubmitした時にブラウザをリロードしないようにする
     event.preventDefault();
     // formのinputの値を取得する
-    // inputの値が正しく取得できているかをコンソールに出力して確認する
-    console.log(input.value);
+    add();
 });
+
+function add() {
+    // liタグを作る
+    const li = document.createElement("li");
+    // inputタグの値を表示する
+    li.innerText = input.value;
+    // デザインのためにクラスを追加する
+    li.classList.add("list-group-item");
+    // ulタグの子供として追加する
+    ul.appendChild(li);
+    // 入力後はフォームを空欄にする
+    input.value = "";
+}
