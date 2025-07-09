@@ -25,6 +25,8 @@ function saveData() {
     // 画面に表示されたTODOの値を取ってくる
     // liタグを全て取得する
     const lists = document.querySelectorAll("li");
-    // 動作確認
-    console.log(lists);
+    lists.forEach(list => {
+        // リストの各要素にアクセスできているか確認
+        console.log(list.innerText);
+    })
 }
