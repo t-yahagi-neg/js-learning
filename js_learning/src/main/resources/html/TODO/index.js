@@ -1,1 +1,2 @@
+// コメント
 console.log('Hello')
