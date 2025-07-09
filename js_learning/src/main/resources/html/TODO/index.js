@@ -10,8 +10,8 @@ form.addEventListener("submit", function(event) {
 function add() {
     let todoText = input.value;
     // フォームが空欄の時は追加しないようにする
-    // 1文字以上なら
-    if (todoText.length > 0) {
+    // 暗黙的型変換で未入力なら空文字になるためfalseになる
+    if (todoText) {
         const li = document.createElement("li");
         li.innerText = todoText;
         li.classList.add("list-group-item");
