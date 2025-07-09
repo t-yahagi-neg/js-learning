@@ -19,13 +19,17 @@ function add(todo) {
     let todoText = input.value;
     
     if (todo) {
-        todoText = todo;
+        todoText = todo.text;
     }
 
     if (todoText) {
         const li = document.createElement("li");
         li.innerText = todoText;
         li.classList.add("list-group-item");
+
+        if (todo && todo.completed) {
+            li.classList.add("text-decoration-line-through");
+        }
 
         li.addEventListener("contextmenu", function(event) {
             event.preventDefault();
@@ -35,6 +39,7 @@ function add(todo) {
 
         li.addEventListener("click", function() {
             li.classList.toggle("text-decoration-line-through");
+            saveData();
         });
 
         ul.appendChild(li);
@@ -46,8 +51,13 @@ function add(todo) {
 function saveData() {
     const lists = document.querySelectorAll("li");
     let todos = [];
+    
     lists.forEach(list => {
-        todos.push(list.innerText);
+        let todo = {
+            text: list.innerText,
+            completed: list.classList.contains("text-decoration-line-through")
+        };
+        todos.push(todo);
     });
     localStorage.setItem("todos", JSON.stringify(todos));
 }
